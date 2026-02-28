@@ -37,6 +37,10 @@ app.use("/uv/", express.static(uvPath));
 app.use("/epoxy/", express.static(epoxyPath));
 app.use("/baremux/", express.static(baremuxPath));
 
+app.get('/home', (req, res) => {
+  res.sendFile(path.join(__dirname, './static/home.html'));
+});
+
 routes.forEach(({ route, file }) => {
   app.get(route, (req, res) => {
     res.sendFile(path.join(__dirname, file));
